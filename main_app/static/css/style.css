@@ -32,3 +32,7 @@ p {
     font-family: 'Merriweather', serif;
     font-weight: 800;
 }
+
+.nav-bar-username {
+    font-size: 10px;
+}

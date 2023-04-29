@@ -32,6 +32,9 @@
                 <ul class="right">
                     {% if user.is_authenticated %}
                     <li>
+                        <a href="{% url 'index' %}">Home <span class="nav-bar-username">(👤 {{ user }})</span></a>
+                    </li>
+                    <li>
                         <a href="{% url 'new_trip' %}">Add a Trip</a>
                     </li>
                     <li>
