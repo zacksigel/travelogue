@@ -26,13 +26,13 @@
                 <span><a href="{% url 'userprofile' city.user.id %}">{{city.user}}</a></span>
                 <p><span><a href="{% url 'detail' city.id %}">{{city.city}}, {{city.country.name}}</a></span></p>
                 <p>{{city.date}}</p>
-                <p>{{ city.description }}</p>
+                <p>{{ city.description }} <span><a href="{% url 'update_trip' city.id %}">✎</a>
+                </span></p>
             </div>
         </div>
     </div>
 </div>
     <div>
-        <a href="{% url 'update_trip' city.id %}">Update</a>
         <a href="{% url 'delete_trip' city.id %}">Delete</a>
     </div>
 
