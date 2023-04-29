@@ -20,7 +20,6 @@ class City(models.Model):
     country = models.ForeignKey(Country, on_delete=models.CASCADE)
     description = models.CharField(max_length=2500)
     date = models.DateField('date traveled')
-    friends = models.ManyToManyField(UserProfile)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
