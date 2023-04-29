@@ -1,0 +1,59 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    {% block title %}
+    <title>Travelogue</title>
+    {% endblock %}</head>
+<body>
+    <header class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper light-blue darken-2">
+                {% if userprofile %}
+                <div class="left brand-logo">{{userprofile}}'s Travelogue</div>
+                {% elif city.city %}
+                <div class="left brand-logo">Travelogue to {{ city.city }}</div>
+                {% else %}
+                <div class="left brand-logo">Travelogue</div>
+                {% endif %}
+                <a class="center brand-logo" href="{% url 'index' %}">🌎</a>
+                <ul class="right">
+                    {% if user.is_authenticated %}
+                    <li>
+                        <a href="{% url 'new_trip' %}">Add a Trip</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'allusers' %}">Find Travelers</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'logout' %}">Logout</a>
+                    </li>
+                    {% else %}
+                    <li>
+                        <a href="{% url 'login' %}">Login</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'signup' %}">Signup</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main class="container">
+        {% block content %} 
+        {% endblock %}
+    </main>
+    <footer class="page-footer light-blue darken-2">
+        <p>Copyright &copy; All Rights Reserved Travelogue 2023</p>
+    </footer>
+</body>
+</html>

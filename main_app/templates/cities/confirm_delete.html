@@ -1,0 +1,14 @@
+{% block title %}
+<title>Are you sure you want to delete {{ object.city }}?</title>
+{% endblock %}
+
+
+{% block content %}
+<h1>Are you sure you want to delete {{ object.city }}?</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Yes - Delete {{ object.city }}" class="btn red">
+    <a href="{% url 'detail' object.id %}" class="btn blue">No - Cancel</a>
+</form>
+{% endblock %}

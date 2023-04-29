@@ -1,0 +1,36 @@
+
+{% extends 'base.html' %}
+
+{% block title %}
+ <title>{{userprofile}}'s Travelogue</title>
+{% endblock %}
+
+{% block content %}
+{% for city in city %}
+<div class="row">
+    <div class="col s10 m7">
+        <div class="card large" id="cardy">
+            <div class="card-content">
+                {% for photo in city.photo_set.all %}
+                <img class="responsive-img card-panel" src="{{ photo.url }}">
+                {% empty %}
+                <div class="card-panel teal-text center-align">No Photos Uploaded</div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="col s10 m3">
+        <div class="card large" id="cardy2">
+            <div class="card-content">
+                <span><a href="{% url 'userprofile' userprofile.id %}">{{city.user}}</a></span>
+                <p><span><a href="{% url 'detail' city.id %}">{{city.city}}, {{city.country.name}}</a></span></p>
+                <p>{{city.date}}</p>
+                <p>{{ city.description }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endfor %}
+{% endblock %}

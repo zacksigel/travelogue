@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+ <title>Travelogue</title>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col s10 m7">
+        <div class="card large" id="cardy">
+            <div class="card-content">
+                {% for photo in city.photo_set.all %}
+                <img class="responsive-img card-panel" src="{{ photo.url }}">
+                {% empty %}
+                <div class="card-panel teal-text center-align">No Photos Uploaded</div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+    <div class="col s10 m3">
+        <div class="card large" id="cardy2">
+            <div class="card-content">
+                <span><a href="{% url 'userprofile' city.user.id %}">{{city.user}}</a></span>
+                <p><span><a href="{% url 'detail' city.id %}">{{city.city}}, {{city.country.name}}</a></span></p>
+                <p>{{city.date}}</p>
+                <p>{{ city.description }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+    <div>
+        <a href="{% url 'update_trip' city.id %}">Update</a>
+        <a href="{% url 'delete_trip' city.id %}">Delete</a>
+    </div>
+
+<p>{% if city.photo_set.all %}
+    <p></p>
+    {% else %}
+    <p>Upload Photo</p>
+    <form
+  action="{% url 'add_photo' city.id %}"
+  enctype="multipart/form-data"
+  method="POST"
+  class="card-panel"
+>
+  {% csrf_token %}
+  <input type="file" name="photo-file" />
+  <br /><br />
+  <input type="submit" class="btn" value="Upload Photo" />
+</form>
+{% endif %}
+</p>
+{% endblock %}
