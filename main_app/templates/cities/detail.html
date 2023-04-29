@@ -23,7 +23,7 @@
     <div class="col s10 m3">
         <div class="card large" id="cardy2">
             <div class="card-content">
-                <span>👤 <a href="{% url 'userprofile' city.user.id %}">{{city.user}}</a></span>
+                <span class="username">👤 <a href="{% url 'userprofile' city.user.id %}">{{city.user}}</a></span>
                 <p><span>📍 <a href="{% url 'detail' city.id %}">{{city.city}}, {{city.country.name}}</a></span></p>
                 <p>🗓 {{city.date}}</p>
                 <p><hr></p>
