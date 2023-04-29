@@ -11,5 +11,6 @@ urlpatterns = [
     path('accounts/signup/', views.signup, name='signup'),
     path("users/", views.allusers, name="allusers"),
     path("<int:city_id>/add_photo/", views.add_photo, name="add_photo"),
-    path("users/<int:user_id>/", views.userprofile, name="userprofile")
+    path("users/<int:user_id>/", views.userprofile, name="userprofile"),
+    path("users/<int:user_id>/addfriend", views.add_friend, name="add_friend"),
 ]

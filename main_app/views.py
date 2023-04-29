@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import City, Photo
+from .models import City, Photo, UserProfile, User
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from django.contrib.auth.forms import UserCreationForm
@@ -41,6 +41,12 @@ def userprofile(request, user_id):
         'userprofile': user_profile,
         'city': city
     })
+
+@login_required
+def add_friend(request, user_id):
+    new_friend = get_user_model().objects.get(id=user_id)
+    # UserProfile.friends.add(new_friend)
+    return redirect("userprofile", user_id=user_id)
 
 def signup(request):
     error_message = ""

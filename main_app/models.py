@@ -12,15 +12,15 @@ class Country(models.Model):
     
 
 
-# class UserProfile(models.Model):
-#     users = models.ManyToManyField(User)
+class UserProfile(models.Model):
+    friends = models.CharField(max_length=200)
 
 class City(models.Model):
     city = models.CharField(max_length=200)
     country = models.ForeignKey(Country, on_delete=models.CASCADE)
     description = models.CharField(max_length=2500)
     date = models.DateField('date traveled')
-    # friends = models.ManyToManyField(UserProfile)
+    friends = models.ManyToManyField(UserProfile)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
