@@ -15,3 +15,11 @@ div {
     border-color: black;
     border-width: 1px;
 } */
+
+.brand-logo {
+    font-family: 'Pacifico', cursive;
+}
+
+li {
+    font-family: 'Pacifico', cursive;   
+}
