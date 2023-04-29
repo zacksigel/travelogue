@@ -12,7 +12,7 @@
         <div class="card large" id="cardy">
             <div class="card-content">
                 {% for photo in city.photo_set.all %}
-                <img class="responsive-img card-panel" src="{{ photo.url }}">
+                <a href="{% url 'detail' city.id %}"><img class="responsive-img card-panel" src="{{ photo.url }}"></a>
                 {% empty %}
                 <div class="card-panel teal-text center-align">No Photos Uploaded</div>
                 {% endfor %}

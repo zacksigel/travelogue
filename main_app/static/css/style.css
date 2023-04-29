@@ -21,5 +21,14 @@ div {
 }
 
 li {
-    font-family: 'Pacifico', cursive;   
+    font-family: 'Roboto Slab', serif;
+}
+
+p {
+    font-family: 'Merriweather', serif;
+}
+
+.username {
+    font-family: 'Merriweather', serif;
+    font-weight: 800;
 }
